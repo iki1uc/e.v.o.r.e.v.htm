@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>QUADRANT — Universal Ort</title>
+<style>
+  body{margin:0;background:#050805;color:#e9e6d5;font-family:monospace;padding:16px}
+  .q{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:600px;margin:0 auto}
+  .k{border:1px solid #2a3a28;background:#0b130c;padding:12px;border-radius:10px}
+  .k b{color:#d5b45d}
+  .mitte{grid-column:1/3;text-align:center;border:1px solid #d5b45d;background:#101a11;padding:12px;border-radius:10px}
+  button{font:inherit;padding:8px 12px;background:#d5b45d;border:0;border-radius:8px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+  <h1>QUADRANT — Universal Ort</h1>
+  <p>Ort = Orte. Immer Home Arbeit. 1 Gleichung.</p>
+
+  <div class="q">
+    <div class="k"><b>Q1 Oben Links — Alt</b><br>Ori. Vol.1. 4 1/2 Jahre.</div>
+    <div class="k"><b>Q2 Oben Rechts — Neu</b><br>Index. Vol.2. Pentagramm Steht.</div>
+    <div class="k"><b>Q3 Unten Links — Stand</b><br>9 unten. Halten. Schwarze Loch nutzbar.</div>
+    <div class="k"><b>Q4 Unten Rechts — Stage</b><br>3 oben. Gehen. 9 -> 9e -> nächstes 9e.</div>
+    <div class="mitte" id="mitte">
+      <b>MITTE 41 — Universal Ort</b><br>
+      <span id="respo">STAND — Ort = Orte — Immer Home Arbeit</span><br><br>
+      <button onclick="go()">1 MOVE — Stand ↔ Stage</button>
+    </div>
+  </div>
+
+<script>
+  // 1 Wahrheit: Stand und Stage abhängiger
+  // Ort = Orte, Bewegung = Bewegungen, weil immer Home Arbeit
+  let istStand = true;
+  function go(){
+    istStand = !istStand;
+    document.getElementById("respo").textContent =
+      istStand
+        ? "STAND — Ort = Orte — Immer Home Arbeit — 41"
+        : "STAGE — Bewegung = Bewegungen — 9 -> 9e -> nächstes 9e — Rückflug Garantie";
+  }
+  // 3e -> 9e -> 81. 25 = 5x5 steht. HOME 40 wartet in 81.
+  // Links alt, rechts neu, no fail. 9 unten, 3 oben.
+</script>
+</body>
+</html>
