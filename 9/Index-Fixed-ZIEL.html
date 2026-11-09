@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INDEX · ZIEL · ANKER 9</title>
+<style>
+:root{--bg:#05050a;--panel:#0a0a12;--line:#1e1e2a;--ink:#c8d8e8;--olive:#a8c686;--cyan:#0ff;--green:#5aff7a;--red:#ff5a5a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 ui-monospace,monospace}
+header{padding:22px 18px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#08080f;z-index:5}
+h1{margin:0;font-size:26px;letter-spacing:6px;color:var(--olive)}h1 span{color:var(--cyan)}
+.kicker{color:var(--green);letter-spacing:3px;font-size:11px;font-weight:800}
+.sub{color:#8a9ab0;max-width:900px}
+main{display:grid;grid-template-columns:340px 1fr;min-height:calc(100vh - 120px)}@media(max-width:900px){main{grid-template-columns:1fr}}
+nav{border-right:1px solid var(--line);padding:14px;overflow:auto}
+nav h2{font-size:11px;letter-spacing:2px;color:var(--olive);margin:14px 0 8px}
+button.file{display:flex;justify-content:space-between;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;margin-bottom:6px}
+button.file:hover,button.file.on{border-color:var(--olive);color:#fff}
+button.file small{color:#6b7a90}
+.view{padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{border:1px solid var(--line);padding:5px 9px;border-radius:999px;font-size:11px}
+.pill.ok{color:var(--green);border-color:#5aff7a55}.pill.warn{color:#f4c96b}.pill.bad{color:var(--red)}
+.action{background:var(--olive);color:#000;border:0;padding:9px 14px;border-radius:10px;font-weight:900;cursor:pointer}
+.action.ghost{background:transparent;color:var(--cyan);border:1px solid #0ff55}
+iframe{width:100%;height:62vh;border:1px solid var(--line);border-radius:14px;background:#fff}
+pre{white-space:pre-wrap;background:#080e1b;border:1px solid var(--line);border-radius:12px;padding:14px;color:#d8f7ed;overflow:auto;max-height:300px}
+code{color:var(--cyan)}
+footer{padding:12px 18px;border-top:1px solid var(--line);color:#5a6a80;font-size:11px;letter-spacing:2px}
+</style></head><body>
+<header><div class="kicker">ANKER · R = IMMER 1 · HALT = ZIEL</div>
+<h1>INDEX <span>· ZIEL · 9</span></h1>
+<p class="sub">Früher: taube Nuss — wusste von gar nix. Jetzt: Index ist das ZIEL, der Aufzug hält hier. <b>ctrl</b> denkt, <b>index</b> zeigt. Alle Dateien unten sind klickbar. Wenn eine Datei fehlt, sagt Index das ehrlich.</p></header>
+<main>
+<nav id="nav"></nav>
+<section class="view">
+<div class="bar">
+<span class="pill ok">R = 1 · ⊤</span>
+<span class="pill" id="rootPill">root: —</span>
+<span class="pill" id="countPill">— Dateien</span>
+<button class="action" onclick="verwurzelnUI()">VERWURZELN / 9e</button>
+<button class="action ghost" onclick="openCurrentNewTab()">In neuem Tab</button>
+</div>
+<div><b id="currentTitle">Wähl links eine Datei — z.B. ctrl.html</b><div id="currentPath" style="color:#6b7a90"></div></div>
+<iframe id="frame" title="Vorschau"></iframe>
+<div id="msg"></div>
+<pre id="log">[index] bereit. HALT = ZIEL. Warte auf Klick.
+[index] Regel: R(_) = 1 — egal was reinkommt, ANKER steht.</pre>
+<h3 style="margin:0;color:var(--olive)">Warum Index vorher taub war</h3>
+<p style="color:#9aa9bd">1) Kein Link zu ctrl.html / home / ort / use / user etc.<br>2) Kein Loader — also kein Seil.<br>3) Kein Fallback — wenn eine Datei fehlte, war einfach Stille.<br>Fix hier: FILES[] = deine Liste, load(file) = Aufzug, verwurzeln() = baut /9/idmd/gpu.rdy dran, egal wo eingebaut.</p>
+</section></main>
+<footer>INDEX · CTRL · HOME · ORT · USE · USER · 9 · /7 · CO2 → O2 + H2O · PENTAGRAMM + PRISMA</footer>
+<script>
+const R = _ => 1;
+const HALT = "ZIEL";
+function L(path){ return path.split("/").slice(0,-1).join("/") || "/"; }
+function canRoot(path){ return path.includes("9") && R("·") === 1; }
+function verwurzeln(anywhere){
+  const p = anywhere + "/9/idmd/gpu.rdy";
+  if(!canRoot(p)) return null;
+  let cur = p;
+  while(cur !== "/"){ if(cur.endsWith("9")) return {root:cur, technik:"gpu.rdy", halt:HALT}; cur = L(cur); }
+  return {root:"9", technik:"⊤", halt:HALT};
+}
+const FILES = [
+  {g:"KERN", f:"index.html", note:"ZIEL selbst"},
+  {g:"KERN", f:"ctrl.html", note:"Gehirn — alles funktionell"},
+  {g:"KERN", f:"ctrl.ler.md", note:"Lernen / Doku"},
+  {g:"KERN", f:"home.html", note:"Home"},
+  {g:"KERN", f:"uni.master.html", note:"Master"},
+  {g:"ORT / RAUM", f:"ort.html", note:"Ort"},
+  {g:"ORT / RAUM", f:"lage.html", note:"Lage"},
+  {g:"ORT / RAUM", f:"raum.id.html", note:"Raum-ID"},
+  {g:"USE / USER", f:"use.html", note:"Use"},
+  {g:"USE / USER", f:"user.html", note:"User"},
+  {g:"USE / USER", f:"rolle.html", note:"Rolle"},
+  {g:"USE / USER", f:"figur.rolle.html", note:"Figur + Rolle"},
+  {g:"SPEICHER", f:"cache.html", note:"Cache"},
+  {g:"SPEICHER", f:"ata.html", note:"Ata / Daten"},
+  {g:"SPEICHER", f:"qu.ick.html", note:"Quick"},
+  {g:"SPEICHER", f:"vol.1.html", note:"Vol. 1"},
+  {g:"ENERGIE / SPIEL", f:"energie.html", note:"Energie"},
+  {g:"ENERGIE / SPIEL", f:"spiel.html", note:"Spiel"},
+  {g:"ZAHLEN", f:"3", note:"3"},
+  {g:"ZAHLEN", f:"3.back.md", note:"3 Backup"},
+  {g:"ZAHLEN", f:"9", note:"9"},
+  {g:"ZAHLEN", f:"9.back.md", note:"9 Backup"},
+  {g:"ZAHLEN", f:"t", note:"t"},
+  {g:"ZAHLEN", f:"T", note:"T"},
+];
+let current = "ctrl.html";
+const nav = document.getElementById("nav");
+let lastGroup = "";
+FILES.forEach(({g,f,note})=>{
+  if(g!==lastGroup){ const h=document.createElement("h2"); h.textContent="◈ "+g; nav.appendChild(h); lastGroup=g; }
+  const b=document.createElement("button"); b.className="file"; b.dataset.file=f;
+  b.innerHTML = "<span>"+f+"</span><small>"+note+"</small>";
+  b.onclick=()=>load(f); nav.appendChild(b);
+});
+document.getElementById("countPill").textContent = FILES.length+" Dateien · "+new Set(FILES.map(x=>x.g)).size+" Gruppen";
+function log(m){ const el=document.getElementById("log"); el.textContent += "\n"+m; el.scrollTop=el.scrollHeight; }
+function load(f){
+  current=f;
+  document.querySelectorAll("button.file").forEach(b=>b.classList.toggle("on", b.dataset.file===f));
+  document.getElementById("currentTitle").textContent="▶ "+f+"  ·  HALT = "+HALT;
+  document.getElementById("currentPath").textContent = location.href.split("/").slice(0,-1).join("/")+"/"+f;
+  document.getElementById("msg").innerHTML="";
+  const frame=document.getElementById("frame"); frame.src=f;
+  log("[index] lade "+f+" · R=1 · Aufzug fährt → ZIEL");
+  fetch(f, {method:"HEAD"}).then(r=>{
+    if(!r.ok) document.getElementById("msg").innerHTML = '<div class="pill bad">⚠ '+f+' nicht gefunden (HTTP '+r.status+') — Datei liegt nicht neben index.html. Leg sie in denselben Ordner, dann lädt sie hier.</div>';
+    else log("[index] "+f+" gefunden · OK");
+  }).catch(()=>{ document.getElementById("msg").innerHTML = '<div class="pill warn">ℹ '+f+' konnte nicht per HEAD geprüft werden (z.B. file://). Im iframe siehst du trotzdem, ob sie lädt.</div>'; });
+}
+function verwurzelnUI(){
+  const res = verwurzeln(location.href.split("/").slice(0,-1).join("/"));
+  document.getElementById("rootPill").textContent = "root: "+(res?res.root+" · technik: "+res.technik+" · halt: "+res.halt:"—");
+  log("[verwurzeln] anywhere → "+JSON.stringify(res)+" · 9e kennt meine Technik");
+  alert("VERWURZELT ✓\nroot: "+res.root+"\ntechnik: "+res.technik+"\nhalt: "+res.halt+"\n\nEgal wo eingebaut — Index kennt jetzt seinen Root.");
+}
+function openCurrentNewTab(){ window.open(current, "_blank"); }
+load("ctrl.html");
+</script></body></html>
