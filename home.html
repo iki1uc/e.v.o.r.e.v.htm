@@ -1,0 +1,17 @@
+<!-- ALLE SPIELE — 1 CODE — WERBEND REALITÄT -->
+<div id="spiel">
+  <h1>ALLE SPIELE — 1 CODE</h1>
+  <p>Feld: <span id="feld">41</span> | Figur: <span id="figur">PAXI</span></p>
+  <button onclick="move()">1 MOVE — HA! OI! BÄ!</button>
+  <p id="respo">Respo: STAND</p>
+</div>
+<script>
+  let feld = 41;
+  function move(){
+    feld = feld + 1; // 1 Move
+    if(feld > 81) feld = 3; // Rückflug Garantie, ver-3telt
+    document.getElementById("feld").textContent = feld;
+    document.getElementById("respo").textContent =
+      "Respo: 1 Move, 1 Feld, 1 Figur — Schach = Soccer = 【entity-Pac Man¦canonical_name=Pac-Man】 = Sim City — ohne Verlust";
+  }
+</script>
