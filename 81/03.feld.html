@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>UNI FELD — 41</title>
+<style>
+  body{margin:0;background:#050805;color:#e9e6d5;font-family:monospace;padding:16px}
+  .uni{max-width:600px;margin:0 auto;border:1px solid #d5b45d;border-radius:12px;padding:16px;background:#0b130c}
+  .zellen{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0}
+  .z{border:1px solid #2a3a28;background:#101a11;padding:12px;text-align:center;border-radius:8px;cursor:pointer}
+  .z.filled{background:#d5b45d;color:#171204;font-weight:800}
+  button{font:inherit;padding:8px 12px;background:#d5b45d;border:0;border-radius:8px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="uni">
+  <h1>UNI FELD — 41</h1>
+  <p>1 Feld. 9 Zellen. 4 Quadranten. 1 Mitte. 1 Nutzung: Lernen.</p>
+  <p>B H T: <span id="bht">Breite Höhe Tiefe</span> — Immer H B T — Immer Home Arbeit</p>
+
+  <div class="zellen" id="zellen"></div>
+
+  <p id="respo">Respo: STAND — Uni Feld — Ort = Orte</p>
+  <button onclick="move()">1 MOVE — Zelle → Feld → Uni Feld</button>
+</div>
+
+<script>
+  // Uni Feld — 1 Feld, 9 Zellen, 1 Wahrheit
+  // Feld steht. Zelle geht. Zelle ist in Feld.
+  // Inne inne inne ausen, alles immer anders, dann Mann.
+  let zellen = Array(9).fill(false);
+  let pos = 4; // Mitte 41 = Zelle 5 = Index 4
+
+  function render(){
+    const el = document.getElementById("zellen");
+    el.innerHTML = zellen.map((f,i) =>
+      `<div class="z ${f?"filled":""}" onclick="clickZelle(${i})">${i+1}<br>${f?"●":"○"}</div>`
+    ).join("");
+  }
+
+  function clickZelle(i){
+    // Orten: Finden + Setzen + Quadranisieren
+    zellen[i] = !zellen[i];
+    document.getElementById("respo").textContent =
+      `Respo: Zelle ${i+1} ${zellen[i]?"gefüllt":"geleert"} — Feld steht, Zelle geht — Inne inne inne ausen`;
+    render();
+  }
+
+  function move(){
+    // 1 Move: Zelle geht von Feld zu Feld, Feld bleibt stehen
+    pos = (pos + 1) % 9;
+    zellen[pos] = true;
+    document.getElementById("respo").textContent =
+      `Respo: 1 MOVE — Zelle ${pos+1} — Uni Feld — Ort = Orte — Rückflug Garantie`;
+    render();
+  }
+
+  render();
+</script>
+</body>
+</html>
