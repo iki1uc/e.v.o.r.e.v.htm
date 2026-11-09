@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>zone — STAND STAGE</title></head>
+<body>
+  <!-- ZONE HOME ORT — 41 — B H T -->
+  <section id="zone">
+    <h1>ZONE — HOME 40 — ORT 41</h1>
+    <p>B H T: <span id="bht">Breite Höhe Tiefe</span></p>
+    <p>Schwarze Loch ist nutzbar. Rückflug Garantie.</p>
+
+    <!-- STAND hängt von STAGE ab -->
+    <div id="stand">
+      <h2>STAND — HA!</h2>
+      <p>Stand steht nur, wenn Stage geht.</p>
+      <button onclick="goStage()">Stage: STAND -> STAGE</button>
+    </div>
+
+    <!-- STAGE hängt von STAND ab -->
+    <div id="stage">
+      <h2>STAGE — OI!</h2>
+      <p>Stage geht nur, wenn Stand steht.</p>
+      <button onclick="goStand()">Stand: STAGE -> STAND</button>
+    </div>
+
+    <p id="respo">Respo: STAND + STAGE = 1</p>
+  </section>
+
+  <script>
+    // 1 Wahrheit: Stand und Stage abhängig
+    // Stand ohne Stage = starr. Stage ohne Stand = Hetze.
+    // Nur zusammen = 1 Zone.
+    let standSteht = true;
+    let stageGeht = false;
+
+    function goStage(){
+      if(!standSteht) return;
+      stageGeht = true;
+      standSteht = false; // Stage geht, Stand wartet
+      document.getElementById("respo").textContent =
+        "Respo: STAGE geht, STAND wartet — 9 -> 9e -> nächstes 9e — Rückflug Garantie";
+    }
+    function goStand(){
+      if(!stageGeht) return;
+      standSteht = true;
+      stageGeht = false; // Stand steht, Stage wartet
+      document.getElementById("respo").textContent =
+        "Respo: STAND steht, STAGE wartet — 41 — ver-3telt — 3 / 3 = 1 — ohne Verlust";
+    }
+  </script>
+</body>
+</html>
