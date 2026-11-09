@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>CELLE CELLEN — STAGE REV UPD UPG</title>
+<style>
+  body{margin:0;background:#050805;color:#e9e6d5;font-family:monospace;padding:16px}
+  .box{max-width:640px;margin:0 auto;border:1px solid #d5b45d;border-radius:12px;padding:16px;background:#0b130c}
+  .zellen{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0}
+  .z{border:1px solid #2a3a28;background:#101a11;padding:14px;text-align:center;border-radius:8px;cursor:pointer}
+  .z.fall{background:#d5b45d;color:#171204;font-weight:800}
+  .z.auf{background:#2e7d32;color:#fff;font-weight:800}
+  button{font:inherit;padding:8px 12px;background:#d5b45d;border:0;border-radius:8px;font-weight:800;cursor:pointer;margin:2px}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>CELLE CELLEN — 1 ist 9</h1>
+  <p>1 Celle = 1 Zelle. Cellen = 9 Zellen. 1 ist 9. 9 ist 1.</p>
+  <p>Stage = Fallen + Aufstehen. Keine Fall ohne Aufstehen.</p>
+
+  <div class="zellen" id="zellen"></div>
+
+  <p id="respo">Respo: STAND — Celle 5 — Mitte 41 — Feld steht, Zelle geht</p>
+
+  <button onclick="fallen()">1 FALLEN — Rev</button>
+  <button onclick="aufstehen()">1 AUFSTEHEN — Upd</button>
+  <button onclick="evo()">1 EVO — Upg</button>
+  <button onclick="stage()">1 STAGE — Rev Upd Upg</button>
+</div>
+
+<script>
+  // Celle Cellen — Stage Rev Upd Upg
+  // Jedes ist ein Fall. Physik holt dich zurück. Keine Fall ohne Aufstehen.
+  let cellen = Array(9).fill("stand");
+  let pos = 4; // Mitte 41 = Celle 5
+  let evoCount = 0;
+
+  function render(){
+    const el = document.getElementById("zellen");
+    el.innerHTML = cellen.map((s,i) =>
+      `<div class="z ${s==="fall"?"fall":s==="auf"?"auf":""}" onclick="clickCelle(${i})">${i+1}<br>${s==="fall"?"▼ FALL":s==="auf"?"▲ AUF":"○ STAND"}</div>`
+    ).join("");
+  }
+
+  function clickCelle(i){
+    // Orten: Finden + Setzen + Quadranisieren
+    // Celle = 1 Zelle. Cellen = 9 Zellen.
+    cellen[i] = cellen[i]==="fall" ? "auf" : "fall";
+    document.getElementById("respo").textContent =
+      `Respo: Celle ${i+1} ${cellen[i]==="fall"?"gefallen":"aufgestanden"} — Celle Cellen — Feld steht, Zelle geht`;
+    render();
+  }
+
+  function fallen(){
+    // Rev — 1 Fall — Physik zieht runter
+    pos = (pos + 1) % 9;
+    cellen[pos] = "fall";
+    document.getElementById("respo").textContent =
+      `Respo: 1 FALLEN — Rev — Celle ${pos+1} gefallen — Physik zieht runter — 9 unten`;
+    render();
+  }
+
+  function aufstehen(){
+    // Upd — 1 Aufstehen — Physik holt zurück
+    cellen[pos] = "auf";
+    document.getElementById("respo").textContent =
+      `Respo: 1 AUFSTEHEN — Upd — Celle ${pos+1} aufgestanden — Physik holt zurück — Rückflug Garantie`;
+    render();
+  }
+
+  function evo(){
+    // Upg — 1 EVO — 1 Fall + 1 Aufstehen
+    evoCount++;
+    cellen[pos] = "fall";
+    setTimeout(()=>{ cellen[pos]="auf"; document.getElementById("respo").textContent=`Respo: 1 EVO — Upg — EVO ${evoCount}/25 — Fallen + Aufstehen = 1`; render(); }, 400);
+    document.getElementById("respo").textContent =
+      `Respo: 1 EVO — Upg — EVO ${evoCount}/25 — Fallen...`;
+    render();
+  }
+
+  function stage(){
+    // Stage = Rev Upd Upg — Fallen + Aufstehen + EVO
+    fallen();
+    setTimeout(aufstehen, 500);
+    setTimeout(evo, 1000);
+  }
+
+  render();
+</script>
+</body>
+</html>
